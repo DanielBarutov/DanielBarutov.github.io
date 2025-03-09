@@ -24,13 +24,17 @@
             vkScript.addEventListener('load', () => {
                 document.addEventListener('DOMContentLoaded', () => {
                     if (typeof VKBridge === 'undefined') {
-                        console.error('VK Bridge не загружен даже после события load.');
+                        console.error('VK Bridge не загружен.');
+                        startGame(); // Запускаем игру даже без VK Bridge
                         return;
                     }
 
                     VKBridge.send('VKWebAppInit')
                         .then(data => console.log('VK Mini App успешно запущено:', data))
-                        .catch(error => console.error('Ошибка инициализации:', error));
+                        .catch(error => {
+                            console.warn('Ошибка инициализации VK Bridge (не критично):', error);
+                            startGame(); // Игнорируем ошибку и запускаем игру
+                        });
 
                     const gameBoard = document.getElementById('game-board');
                     let cards = [];
@@ -74,7 +78,11 @@
                             card2.classList.add('matched');
                             matchedPairs++;
                             if (matchedPairs === cardValues.length / 2) {
-                                VKBridge.send('VKWebAppShowNativePopup', { message: 'Победа! Вы нашли все пары!' });
+                                if (typeof VKBridge !== 'undefined') {
+                                    VKBridge.send('VKWebAppShowNativePopup', { message: 'Победа! Вы нашли все пары!' });
+                                } else {
+                                    alert('Победа! Вы нашли все пары!');
+                                }
                             }
                         } else {
                             card1.classList.remove('open');
@@ -90,7 +98,8 @@
             });
 
             vkScript.onerror = () => {
-                console.error('Не удалось загрузить VK Bridge с unpkg.');
+                console.error('Не удалось загрузить VK Bridge с unpkg. Игра запускается без VK.');
+                startGame(); // Запускаем игру даже при ошибке загрузки
             };
         }
     </script>
