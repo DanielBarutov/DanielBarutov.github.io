@@ -45,11 +45,21 @@
     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/vk-bridge.min.js"></script>
     <script>
         // Инициализация VK Bridge
-        VKBridge.send('VKWebAppInit')
-            .then(() => console.log('VK Mini App запущено'))
-            .catch(error => console.error('Ошибка:', error));
+       document.addEventListener('DOMContentLoaded', () => {
+        if (typeof VKBridge === 'undefined') {
+            console.error('VK Bridge не загружен. Проверьте подключение скрипта.');
+            return;
+        }
 
-        // Логика игры
+        VKBridge.send('VKWebAppInit')
+            .then(data => {
+                console.log('VK Mini App успешно запущено:', data);
+            })
+            .catch(error => {
+                console.error('Ошибка инициализации VK Bridge:', error);
+            });
+
+        // Остальной код игры...
         const gameBoard = document.getElementById('game-board');
         let cards = [];
         let flippedCards = [];
