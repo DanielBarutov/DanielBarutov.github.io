@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пасьянс: Найди пару</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .card {
+            width: 80px;
+            height: 120px;
+            background-color: #fff;
+            border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .card.open {
+            background-color: #87ceeb;
+        }
+        .card.matched {
+            background-color: #90ee90;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>Пасьянс: Найди пару</h1>
+    <div id="game-board"></div>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/vk-bridge.min.js"></script>
+    <script>
+        // Инициализация VK Bridge
+        VKBridge.send('VKWebAppInit')
+            .then(() => console.log('VK Mini App запущено'))
+            .catch(error => console.error('Ошибка:', error));
+
+        // Логика игры
+        const gameBoard = document.getElementById('game-board');
+        let cards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+
+        // Создаем массив карт (4 пары для примера: A, A, K, K, Q, Q, J, J)
+        const cardValues = ['A', 'A', 'K', 'K', 'Q', 'Q', 'J', 'J'];
+        
+        // Перемешиваем массив
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Инициализация игры
+        function startGame() {
+            cards = shuffle([...cardValues]);
+            gameBoard.innerHTML = '';
+            cards.forEach(value => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.dataset.value = value;
+                card.addEventListener('click', flipCard);
+                gameBoard.appendChild(card);
+            });
+        }
+
+        // Переворот карты
+        function flipCard() {
+            if (flippedCards.length >= 2 || this.classList.contains('open') || this.classList.contains('matched')) return;
+
+            this.classList.add('open');
+            this.textContent = this.dataset.value;
+            flippedCards.push(this);
+
+            if (flippedCards.length === 2) {
+                setTimeout(checkMatch, 1000);
+            }
+        }
+
+        // Проверка пары
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            if (card1.dataset.value === card2.dataset.value) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedPairs++;
+                if (matchedPairs === cardValues.length / 2) {
+                    VKBridge.send('VKWebAppShowNativePopup', { message: 'Победа! Вы нашли все пары!' });
+                }
+            } else {
+                card1.classList.remove('open');
+                card2.classList.remove('open');
+                card1.textContent = '';
+                card2.textContent = '';
+            }
+            flippedCards = [];
+        }
+
+        // Запуск игры
+        startGame();
+    </script>
+</body>
+</html>
