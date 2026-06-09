@@ -1,100 +1,101 @@
-/* Основные стил */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+  background: #000;
+  color: #00ff41;
+  font-family: 'Courier New', Courier, monospace;
+  height: 100vh;
+  overflow: hidden;
 }
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
+/* Matrix Rain canvas — fixed full-screen behind everything */
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.30;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+/* Hero layout — centered in viewport */
+.hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-nav ul li {
-    margin: 0 1rem;
+.hero-content {
+  text-align: left;
+  padding: 2rem;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+/* > DANIEL BARUTOV line */
+.prompt {
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: bold;
+  text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 
-nav ul li a:hover {
-    color: #ddd;
+/* Blinking cursor */
+.cursor {
+  animation: blink 1s step-end infinite;
 }
 
-main {
-    margin-top: 60px;
-    padding: 2rem;
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
-section {
-    margin-bottom: 3rem;
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: #00cc33;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 6px #00cc33;
 }
 
-h1, h2 {
-    color: #333;
+.bio {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: #009922;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
 }
 
-.case-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+/* Terminal-style buttons */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.case-card {
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+.btn {
+  color: #00ff41;
+  text-decoration: none;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  border: 1px solid #00ff41;
+  padding: 0.4rem 1rem;
+  letter-spacing: 0.08em;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
 }
 
-.case-card:hover {
-    transform: translateY(-5px);
+.btn:hover {
+  background: #00ff41;
+  color: #000;
+  box-shadow: 0 0 14px #00ff41, 0 0 28px #00ff41;
 }
 
-.case-card a {
-    display: inline-block;
-    margin-top: 1rem;
-    color: #007BFF;
-    text-decoration: none;
+@media (max-width: 480px) {
+  .links {
+    flex-direction: column;
+  }
 }
-
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background: #333;
-    color: #fff;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    nav ul li {
-        margin: 0.5rem 0;
-    }
-    .case-grid {
-        grid-template-columns: 1fr;
-    }
-} 
