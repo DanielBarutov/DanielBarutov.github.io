@@ -1,64 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мое Портфолио</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Barutov</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#cases">Кейсы</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="about">
-            <h2>Обо мне</h2>
-            <p>Привет, меня зовут Барутов Данил, мне 25 лет. Я разработчик без формального образования в программировании, но с реальным опытом в нескольких направлениях: от написания Telegram-ботов на Python до настройки игровых серверов и администрирования Linux-систем.</p>
-            <p>Я люблю разбираться в системах, строить рабочие решения с нуля и постоянно учусь новому. Работал с реальными задачами: создавал ботов под заказы, настраивал игровые сервера для Rust, писал плагины на C#, работал с GUI в C++/Qt под Linux, а также управлял виртуализацией и защитой серверов на Debian с использованием Proxmox.</p>
-            <p>Моя сильная сторона — универсальность и способность разобраться в новой технологии с нуля, быстро применяя её на практике.</p>
-        </section>
-        <section id="background">
-            <h2>Мои ключевые навыки</h2>
-            <p>Python — Telegram-боты, автоматизация</p>
-            <p>C# — плагины для игровых серверов (Rust)</p>
-            <p>C++ / Qt5, Qt6 — графические приложения под Linux</p>
-            <p>Linux / Debian — настройка, безопасность, сервисы</p>
-            <p>Proxmox — виртуализация, управление VPS</p>
-            <p>Git, SSH, Docker (средний уровень)</p>
-            <h2></h2>Что я ищу</h2>
-            <p>Возможности развиваться в проектах, где важна практическая инженерия, нестандартные задачи и работа с системами, а не просто «писать код ради кода». Интересны как backend-направления, так и DevOps/инфраструктура.</p>
-        </section>
-        <section id="cases">
-            <h2>Мои Кейсы</h2>
-            <div class="case-grid">
-                <!-- Кейсы будут добавлены здесь -->
-                <div class="case-card">
-                    <h3>Проект 1</h3>
-                    <p>Краткое описание проекта 1.</p>
-                    <a href="#">Подробнее</a>
-                </div>
-                <div class="case-card">
-                    <h3>Проект 2</h3>
-                    <p>Краткое описание проекта 2.</p>
-                    <a href="#">Подробнее</a>
-                </div>
-            </div>
-        </section>
-        <section id="contact">
-            <h2>Связаться со мной</h2>
-            <p>Email: <a href="mailto:barutov.danil@gmail.com">barutov.danil@gmail.com</a></p>
-            <p>GitHub: <a href="https://github.com/danielbarutov">DanielBarutov</a></p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Барутов Данил. Все права защищены.</p>
-    </footer>
-    <script src="script.js"></script>
+  <canvas id="matrix-canvas"></canvas>
+
+  <main class="hero">
+    <div class="hero-content">
+      <p class="prompt">&gt; <span id="typed-name"></span><span class="cursor">_</span></p>
+      <p class="subtitle">Backend Developer / Microservices</p>
+      <p class="bio">Building scalable distributed systems<br>and microservice architectures.</p>
+      <div class="links">
+        <a class="btn" href="https://github.com/DanielBarutov" target="_blank" rel="noopener">[ GitHub ]</a>
+        <a class="btn" href="https://t.me/YOUR_TG_USERNAME" target="_blank" rel="noopener">[ Telegram ]</a>
+        <a class="btn" href="mailto:barutovdg@gmail.com">[ Email ]</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
-</html> 
+</html>
