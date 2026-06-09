@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daniel Barutov</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <canvas id="matrix-canvas"></canvas>
+
 
   <main class="hero">
     <div class="hero-content">
@@ -52,7 +55,10 @@
         <span class="project-period">2025 — present</span>
       </div>
       <p class="project-desc">
-        REST API for order processing and menu management. Designed multi-tenant DB schema for product catalog, modifiers, and order history. Built order status flow across roles (operator → kitchen → courier). Implemented revenue dashboards with avg check and hourly load analytics. Optimized heavy analytics queries, set up Docker deployment for onboarding new outlets.
+        REST API for order processing and menu management. Designed multi-tenant DB schema for product catalog,
+        modifiers, and order history. Built order status flow across roles (operator → kitchen → courier). Implemented
+        revenue dashboards with avg check and hourly load analytics. Optimized heavy analytics queries, set up Docker
+        deployment for onboarding new outlets.
       </p>
       <ul class="project-results">
         <li>Zero lost orders between roles — full status flow eliminated manual handoffs</li>
@@ -75,7 +81,10 @@
         <span class="project-period">2024 — 2025</span>
       </div>
       <p class="project-desc">
-        Backend for automated VPN subscription sales across 3 leased servers. Users purchase via Telegram bot, instantly receive xray/VLESS configs. Integrated ЮKassa with idempotent webhook handling for auto-renewal and refunds. Celery workers handle access provisioning and scheduled server health checks. Bot routes users to least-loaded server automatically.
+        Backend for automated VPN subscription sales across 3 leased servers. Users purchase via Telegram bot, instantly
+        receive xray/VLESS configs. Integrated ЮKassa with idempotent webhook handling for auto-renewal and refunds.
+        Celery workers handle access provisioning and scheduled server health checks. Bot routes users to least-loaded
+        server automatically.
       </p>
       <ul class="project-results">
         <li>Full "payment → active config" cycle runs without operator involvement</li>
@@ -101,7 +110,10 @@
         <span class="project-period">2023 — 2024</span>
       </div>
       <p class="project-desc">
-        Internal platform for SMB: employee registry, task distribution across departments, execution tracking via web and Telegram Mini App. Built REST API and task management business logic, multi-tenant DB schema (company → departments → employees). Implemented roles &amp; permissions, Telegram bot + Mini App integration, Celery reminders and periodic reports.
+        Internal platform for SMB: employee registry, task distribution across departments, execution tracking via web
+        and Telegram Mini App. Built REST API and task management business logic, multi-tenant DB schema (company →
+        departments → employees). Implemented roles &amp; permissions, Telegram bot + Mini App integration, Celery
+        reminders and periodic reports.
       </p>
       <ul class="project-results">
         <li>Managers get real-time task visibility — no status calls needed</li>
@@ -124,4 +136,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
