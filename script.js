@@ -1,11 +1,12 @@
 // ── Matrix Rain ──────────────────────────────────────────────────────────────
 const canvas = document.getElementById('matrix-canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas ? canvas.getContext('2d') : null;
 
 const KATAKANA = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
 const CHARS = (KATAKANA + '01').split('');
 
 const FONT_SIZE = 16;
+const RAIN_INTERVAL = 50;   // ms — ~20 fps
 let columns = [];
 
 function resize() {
@@ -43,23 +44,29 @@ function drawRain() {
   });
 }
 
-window.addEventListener('resize', resize);
-resize();
-setInterval(drawRain, 50); // ~20 fps keeps it readable
+if (canvas && ctx) {
+  window.addEventListener('resize', resize);
+  resize();
+  setInterval(drawRain, RAIN_INTERVAL);
+}
 
 
 // ── Typewriter ────────────────────────────────────────────────────────────────
 const NAME = 'DANIEL BARUTOV';
+const TYPE_DELAY = 100;       // ms per character
+const TYPE_START_DELAY = 400; // ms before typing starts
+
 const typedEl = document.getElementById('typed-name');
 let charIndex = 0;
 
 function typeWriter() {
   if (charIndex < NAME.length) {
-    typedEl.textContent += NAME[charIndex];
+    typedEl.textContent = NAME.slice(0, charIndex + 1);
     charIndex++;
-    setTimeout(typeWriter, 100);
+    setTimeout(typeWriter, TYPE_DELAY);
   }
 }
 
-// slight delay before typing starts
-setTimeout(typeWriter, 400);
+if (typedEl) {
+  setTimeout(typeWriter, TYPE_START_DELAY);
+}
