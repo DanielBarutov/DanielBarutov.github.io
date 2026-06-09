@@ -22,6 +22,106 @@
     </div>
   </main>
 
+  <section class="section" id="skills">
+    <h2 class="section-title">&gt; skills</h2>
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">AsyncIO</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">SQLAlchemy</span>
+      <span class="tag">Alembic</span>
+      <span class="tag">Redis</span>
+      <span class="tag">Celery</span>
+      <span class="tag">Docker</span>
+      <span class="tag">Nginx</span>
+      <span class="tag">Linux</span>
+      <span class="tag">GitLab CI/CD</span>
+      <span class="tag">REST API</span>
+      <span class="tag">Telegram Bot API</span>
+      <span class="tag">pytest</span>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <h2 class="section-title">&gt; projects</h2>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">SaaS platform for delivery &amp; cafes</span>
+        <span class="project-period">2025 — present</span>
+      </div>
+      <p class="project-desc">
+        REST API for order processing and menu management. Designed multi-tenant DB schema for product catalog, modifiers, and order history. Built order status flow across roles (operator → kitchen → courier). Implemented revenue dashboards with avg check and hourly load analytics. Optimized heavy analytics queries, set up Docker deployment for onboarding new outlets.
+      </p>
+      <ul class="project-results">
+        <li>Zero lost orders between roles — full status flow eliminated manual handoffs</li>
+        <li>Owners get real-time revenue, avg check and load data per outlet</li>
+        <li>Onboarding a new outlet became a routine op — no code changes needed</li>
+      </ul>
+      <div class="project-stack">
+        <span class="tag tag-sm">Python</span>
+        <span class="tag tag-sm">AsyncIO</span>
+        <span class="tag tag-sm">PostgreSQL</span>
+        <span class="tag tag-sm">Redis</span>
+        <span class="tag tag-sm">Docker</span>
+        <span class="tag tag-sm">React</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">VPN subscription &amp; billing automation</span>
+        <span class="project-period">2024 — 2025</span>
+      </div>
+      <p class="project-desc">
+        Backend for automated VPN subscription sales across 3 leased servers. Users purchase via Telegram bot, instantly receive xray/VLESS configs. Integrated ЮKassa with idempotent webhook handling for auto-renewal and refunds. Celery workers handle access provisioning and scheduled server health checks. Bot routes users to least-loaded server automatically.
+      </p>
+      <ul class="project-results">
+        <li>Full "payment → active config" cycle runs without operator involvement</li>
+        <li>Idempotent webhook processing eliminated lost payments and duplicate charges</li>
+        <li>Automatic load balancing across 3 servers — no manual user migration needed</li>
+      </ul>
+      <div class="project-stack">
+        <span class="tag tag-sm">Python</span>
+        <span class="tag tag-sm">FastAPI</span>
+        <span class="tag tag-sm">AsyncIO</span>
+        <span class="tag tag-sm">PostgreSQL</span>
+        <span class="tag tag-sm">Celery</span>
+        <span class="tag tag-sm">Redis</span>
+        <span class="tag tag-sm">ЮKassa</span>
+        <span class="tag tag-sm">Docker</span>
+        <span class="tag tag-sm">Nginx</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">HRM / Task management SaaS</span>
+        <span class="project-period">2023 — 2024</span>
+      </div>
+      <p class="project-desc">
+        Internal platform for SMB: employee registry, task distribution across departments, execution tracking via web and Telegram Mini App. Built REST API and task management business logic, multi-tenant DB schema (company → departments → employees). Implemented roles &amp; permissions, Telegram bot + Mini App integration, Celery reminders and periodic reports.
+      </p>
+      <ul class="project-results">
+        <li>Managers get real-time task visibility — no status calls needed</li>
+        <li>Telegram Mini App: zero install friction for employees</li>
+        <li>Multi-tenant arch allows onboarding new clients without new deployments</li>
+      </ul>
+      <div class="project-stack">
+        <span class="tag tag-sm">Python</span>
+        <span class="tag tag-sm">FastAPI</span>
+        <span class="tag tag-sm">PostgreSQL</span>
+        <span class="tag tag-sm">SQLAlchemy</span>
+        <span class="tag tag-sm">Alembic</span>
+        <span class="tag tag-sm">Celery</span>
+        <span class="tag tag-sm">Redis</span>
+        <span class="tag tag-sm">GitLab CI/CD</span>
+        <span class="tag tag-sm">pytest</span>
+      </div>
+    </div>
+  </section>
+
   <script src="script.js"></script>
 </body>
 </html>
